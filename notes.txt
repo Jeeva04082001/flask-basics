@@ -1,0 +1,157 @@
+What this structure teaches you
+
+
+
+| File            | Responsibility |
+| --------------- | -------------- |
+| `config.py`     | DB config      |
+| `models.py`     | Tables         |
+| `routes.py`     | APIs           |
+| `extensions.py` | Shared DB      |
+| `__init__.py`   | App factory    |
+| `run.py`        | Start server   |
+
+
+
+# flask_mysql_app/
+# │
+# ├── app/
+# │   ├── __init__.py        ← app creation
+# │   ├── config.py          ← MySQL config
+# │   ├── extensions.py      ← DB init
+# │   ├── models.py          ← DB models
+# │   └── routes.py          ← APIs / routes
+# │
+# ├── run.py                 ← app start file
+# ├── requirements.txt
+# └── venv/
+
+
+run.py
+  ↓
+create_app()
+  ↓
+load config (MySQL)
+  ↓
+initialize db
+  ↓
+register routes (Blueprint)
+  ↓
+server starts
+
+
+--------------------------------
+
+Browser
+ ↓
+run.py (server running)
+ ↓
+Blueprint route
+ ↓
+User model
+ ↓
+SQLAlchemy ORM
+ ↓
+MySQL database
+
+
+| File          | Role            |
+| ------------- | --------------- |
+| run.py        | Start server    |
+| __init__.py   | Build app       |
+| config.py     | DB settings     |
+| extensions.py | Shared DB       |
+| models.py     | Table structure |
+| routes.py     | API logic       |
+
+
+
+STEP 8: Create DB Tables (ONE TIME)
+
+in terminal:
+type ---> python
+
+from run import app
+from app.extensions immport db
+with app.app_context():
+    db.create_all()
+
+========================================
+
+from run import app
+
+This loads:
+Flask app
+MySQL config
+Models
+Extensions   
+
+---------------
+from app.extensions import db
+
+This is the same db used in models.
+
+---------------------
+
+with app.app_context():
+
+Now Flask knows:
+Which app
+Which DB
+Which models
+
+------------
+
+db.create_all()
+⚠️ Note the indentation (important)
+
+
+-------------------------------------------------------
+
+🔐 STEP 11: Authentication & Authorization (Flask)
+🎯 Goal (Outcome)
+
+👉 Secure your Flask app
+👉 Only valid users can access protected pages
+👉 Different users → different permissions
+
+1️⃣ Authentication vs Authorization (FIRST UNDERSTAND)
+
+
+| Term           | Meaning                            |
+| -------------- | ---------------------------------- |
+| Authentication | **Who are you?** (Login)           |
+| Authorization  | **What can you do?** (Permissions) |
+
+
+Example:
+
+Login success → Authentication ✅
+
+Admin can delete → Authorization ✅
+
+
+2️⃣ Password Hashing (VERY IMPORTANT)
+
+❌ NEVER store passwords like this:
+123456
+✅ Always store hashed passwords
+
+Using werkzeug.security
+from werkzeug.security import generate_password_hash, check_password_hash
+
+Hash password (Register)
+hashed_pwd = generate_password_hash("123456")
+
+Verify password (Login)
+check_password_hash(hashed_pwd, "123456")  # True
+
+3️⃣ Session-based Authentication (Flask-Login)
+🔹 What is a Session?
+
+Stored in browser (cookie)
+Identifies logged-in user
+Automatically sent with every request
+
+pip install flask-login
+
