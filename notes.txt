@@ -782,6 +782,139 @@ Each request contains all required authentication information,
 usually inside a JWT token, which the server verifies without relying on stored state.
 
 
+==============================================================================================
+
+https://chatgpt.com/c/696ba29d-eda4-8323-a146-19e0a2fe13cb
+
+
+
+What is REST?
+
+REST = Representational State Transfer
+
+1.Representation → JSON / XML (mostly JSON)
+2.State → Data of a resource (user, order, product)
+3.Transfer → Data is transferred via HTTP
+
+👉 In simple words:
+REST is a way of transferring resource data between client and server using HTTP and JSON.
+
+REST stands for Representational State Transfer and it is an architectural style used to build stateless APIs 
+using HTTP methods and JSON data.
+
+
+👉 Simple-ah sollanum na:
+
+Client (browser / mobile app)
+Server-kitta
+HTTP methods (GET, POST, PUT, DELETE) use panni
+JSON format-la data request & response pannradhu thaan REST API
+
+🧠 Stateless na:
+Server-ku client pathi nyabagam irukkaathu
+Oru request-la thevaiyana ellaa information-um irukkanum
+
+
+
+
+🌍 Real-World Analogy (Easy to Remember)
+🏨 Hotel / Restaurant Example
+
+You = Customer (Client)
+Waiter = REST API
+Kitchen = Server
+Menu = API endpoints
+
+Steps:
+
+1️⃣ Neenga waiter-kitta order kudukkureenga (request)
+2️⃣ Waiter kitchen-kitta solluvaan
+3️⃣ Kitchen food ready pannum
+4️⃣ Waiter food-a thirumba kuduppaan (response)
+
+🍽️ Important point:
+
+Waiter-ku neenga yesterday enna order pannineenga nu theriyathu
+Each order is independent → this is stateless
+
+👉 Ithu thaan REST concept
+
+
+❓ Why REST is Stateless?
+✅ Short Answer (Interview)
+REST is stateless because each client request must contain all the information needed to process it,
+ and the server does not store any client session data.
+
+
+
+
+🧠 Simple Explanation
+Stateless means:
+
+Server does not remember previous requests
+Every request is independent
+
+👉 So the server:
+
+Doesn’t store session
+Doesn’t track client history
+Just processes the request and responds
+
+
+=======================================================================
+///////////////////////////////////////////////////////////////////////
+
+
+❓ What is JSON data?
+✅ Simple Definition
+
+JSON stands for JavaScript Object Notation.
+👉 JSON is a lightweight data format used to exchange data between client and server.
+
+JSON na data anuppa use pannra oru format.
+
+🔥 Interview One-Liner
+JSON is a lightweight, text-based data format used for structured data exchange between client and server in REST APIs.
+
+
+////////////////////////////////////////////////////////////////////////////////
+
+
+🔥 Interview One-Line Answers
+
+Authentication
+Authentication verifies the identity of a user.
+
+Authorization
+Authorization determines what resources an authenticated user is allowed to access.
+
+Combined Answer
+Authentication checks who the user is, while authorization checks what the user is allowed to do.
+
+
+🧠 Important Truth (This is REAL concept)
+
+⚠️ Authentication DOES NOT mean:
+
+Login
+Password
+Username
+
+Those are methods.
+👉 Authentication = Identity verification
+
+⚠️ Authorization DOES NOT mean:
+
+Button disable
+UI hide
+
+Those are implementations.
+👉 Authorization = Access decision
+
+
+
+
+
 
 
 
